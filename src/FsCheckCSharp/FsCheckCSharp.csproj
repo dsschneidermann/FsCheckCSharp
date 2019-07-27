@@ -25,6 +25,8 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <AssemblyName>FsCheckCSharp</AssemblyName>
     <RootNamespace>FsCheckCSharp</RootNamespace>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <ItemGroup>
