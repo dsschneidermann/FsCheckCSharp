@@ -24,7 +24,9 @@ namespace FsCheckCSharp
         /// <param name="_SkipCreateAssignment">
         ///     Do not create the "var data = " prefix for each serialized object.
         /// </param>
-        public CSharpNotationConfig(bool _PreferObjectInitialization, bool _IncludeParameterNames, bool _IncludeFullTypeNames, bool _SkipCreateAssignment)
+        public CSharpNotationConfig(
+            bool _PreferObjectInitialization, bool _IncludeParameterNames, bool _IncludeFullTypeNames,
+            bool _SkipCreateAssignment)
         {
             this._PreferObjectInitialization = _PreferObjectInitialization;
             this._IncludeParameterNames = _IncludeParameterNames;
@@ -46,14 +48,17 @@ namespace FsCheckCSharp
         ///     Prefer object initialization even if a constructor for the type is available.
         /// </summary>
         public bool _PreferObjectInitialization { get; }
+
         /// <summary>
         ///     Include names for parameters in constructor invocations.
         /// </summary>
         public bool _IncludeParameterNames { get; }
+
         /// <summary>
         ///     Include full type name and assembly name.
         /// </summary>
         public bool _IncludeFullTypeNames { get; }
+
         /// <summary>
         ///     Do not create the "var data = " prefix for each serialized object.
         /// </summary>
@@ -104,9 +109,15 @@ namespace FsCheckCSharp
         /// <param name="_SkipCreateAssignment">
         ///     Do not create the "var data = " prefix for each serialized object.
         /// </param>
-        public CSharpNotationConfig With(bool? _PreferObjectInitialization = null, bool? _IncludeParameterNames = null, bool? _IncludeFullTypeNames = null, bool? _SkipCreateAssignment = null)
+        public CSharpNotationConfig With(
+            bool? _PreferObjectInitialization = null, bool? _IncludeParameterNames = null,
+            bool? _IncludeFullTypeNames = null, bool? _SkipCreateAssignment = null)
         {
-            return new CSharpNotationConfig(_PreferObjectInitialization ?? this._PreferObjectInitialization, _IncludeParameterNames ?? this._IncludeParameterNames, _IncludeFullTypeNames ?? this._IncludeFullTypeNames, _SkipCreateAssignment ?? this._SkipCreateAssignment);
+            return new CSharpNotationConfig(
+                _PreferObjectInitialization ?? this._PreferObjectInitialization,
+                _IncludeParameterNames ?? this._IncludeParameterNames,
+                _IncludeFullTypeNames ?? this._IncludeFullTypeNames, _SkipCreateAssignment ?? this._SkipCreateAssignment
+            );
         }
     }
 }

@@ -46,13 +46,12 @@ namespace FsCheckCSharp
 
         public FsCheckRunner(
             IRunner runnerImplementation, FsCheckRunnerConfig csharpRunnerConfig,
-            CSharpNotationConfig csharpNotationConfig, int? maxTest, Action<string> traceDiagnosticsWriter)
+            CSharpNotationConfig csharpNotationConfig, int? maxTest)
         {
             RunnerImplementation = runnerImplementation;
             FsCheckRunnerConfig = csharpRunnerConfig ?? FsCheckRunnerConfig.Default;
             CSharpNotationConfig = csharpNotationConfig ?? CSharpNotationConfig.Default;
             MaxTest = maxTest ?? FsCheckConfig.Default.MaxTest;
-            TraceDiagnosticsWriter = traceDiagnosticsWriter ?? Console.WriteLine;
 
             TestTimer.Start();
         }
@@ -69,7 +68,6 @@ namespace FsCheckCSharp
         public CSharpNotationConfig CSharpNotationConfig { get; }
         public int MaxTest { get; }
 
-        private Action<string> TraceDiagnosticsWriter { get; }
         private Exception FailureCausedByException { get; set; }
 
         public void Dispose()
@@ -408,7 +406,7 @@ namespace FsCheckCSharp
         private void Trace(string message)
         {
             debugTraceLines.Add(message);
-            TraceDiagnosticsWriter(message);
+            FsCheckRunnerConfig.TraceDiagnosticsWriter?.Invoke(message);
         }
     }
 }

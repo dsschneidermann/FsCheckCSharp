@@ -214,8 +214,7 @@ namespace FsCheckCSharp
                 QuietOnSuccess: QuietOnSuccess, Replay: Replay,
                 Runner: new FsCheckRunner(
                     runnerImplementation: runner, csharpRunnerConfig: csharpRunnerConfig,
-                    csharpNotationConfig: csharpNotationConfig, maxTest: MaxTest ?? config.MaxTest,
-                    traceDiagnosticsWriter: null
+                    csharpNotationConfig: csharpNotationConfig, maxTest: MaxTest ?? config.MaxTest
                 ), StartSize: StartSize
             );
         }

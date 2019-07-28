@@ -18,15 +18,21 @@ namespace FsCheckCSharp
         /// <summary>Create an instance.</summary>
         /// <param name="Events">
         ///     Events that can be invoked on this config. It is a separate object so that event bindings do not
-        ///     follow the <see cref="FsCheckRunnerConfig" />. It can be deconstructed into a triple of 
+        ///     follow the <see cref="FsCheckRunnerConfig" />. It can be deconstructed into a triple of
         ///     the methods: (generated, tested, timer).
         /// </param>
-        public FsCheckRunnerConfig(bool TraceNumberOfRuns, bool ThrowOnFailure, bool TraceDiagnosticsEnabled, TraceCallEvents Events)
+        /// <param name="TraceDiagnosticsWriter">
+        ///     The action invoked to write traces while the runner is executing. Default is Console.WriteLine.
+        /// </param>
+        public FsCheckRunnerConfig(
+            bool TraceNumberOfRuns, bool ThrowOnFailure, bool TraceDiagnosticsEnabled, TraceCallEvents Events,
+            Action<string> TraceDiagnosticsWriter)
         {
             this.TraceNumberOfRuns = TraceNumberOfRuns;
             this.ThrowOnFailure = ThrowOnFailure;
             this.TraceDiagnosticsEnabled = TraceDiagnosticsEnabled;
             this.Events = Events;
+            this.TraceDiagnosticsWriter = TraceDiagnosticsWriter;
         }
 
         /// <summary>
@@ -49,7 +55,8 @@ namespace FsCheckCSharp
         /// <summary>
         ///     Returns the default configuration (all settings false).
         /// </summary>
-        public static FsCheckRunnerConfig Default => new FsCheckRunnerConfig(false, false, false, new TraceCallEvents());
+        public static FsCheckRunnerConfig Default =>
+            new FsCheckRunnerConfig(false, false, false, new TraceCallEvents(), Console.WriteLine);
 
         public bool TraceNumberOfRuns { get; }
         public bool ThrowOnFailure { get; }
@@ -57,10 +64,15 @@ namespace FsCheckCSharp
 
         /// <summary>
         ///     Events that can be invoked on this config. It is a separate object so that event bindings do not
-        ///     follow the <see cref="FsCheckRunnerConfig" />. It can be deconstructed into a triple of 
+        ///     follow the <see cref="FsCheckRunnerConfig" />. It can be deconstructed into a triple of
         ///     the methods: (generated, tested, timer).
         /// </summary>
         public TraceCallEvents Events { get; }
+
+        /// <summary>
+        ///     The action invoked to write traces while the runner is executing. Default is Console.WriteLine.
+        /// </summary>
+        public Action<string> TraceDiagnosticsWriter { get; }
 
         public class TraceCallEvents
         {
@@ -110,12 +122,21 @@ namespace FsCheckCSharp
         /// <summary>Return a new instance with the properties.</summary>
         /// <param name="Events">
         ///     Events that can be invoked on this config. It is a separate object so that event bindings do not
-        ///     follow the <see cref="FsCheckRunnerConfig" />. It can be deconstructed into a triple of 
+        ///     follow the <see cref="FsCheckRunnerConfig" />. It can be deconstructed into a triple of
         ///     the methods: (generated, tested, timer).
         /// </param>
-        public FsCheckRunnerConfig With(bool? TraceNumberOfRuns = null, bool? ThrowOnFailure = null, bool? TraceDiagnosticsEnabled = null, TraceCallEvents Events = null)
+        /// <param name="TraceDiagnosticsWriter">
+        ///     The action invoked to write traces while the runner is executing. Default is Console.WriteLine.
+        /// </param>
+        public FsCheckRunnerConfig With(
+            bool? TraceNumberOfRuns = null, bool? ThrowOnFailure = null, bool? TraceDiagnosticsEnabled = null,
+            TraceCallEvents Events = null, Action<string> TraceDiagnosticsWriter = null)
         {
-            return new FsCheckRunnerConfig(TraceNumberOfRuns ?? this.TraceNumberOfRuns, ThrowOnFailure ?? this.ThrowOnFailure, TraceDiagnosticsEnabled ?? this.TraceDiagnosticsEnabled, Events ?? this.Events);
+            return new FsCheckRunnerConfig(
+                TraceNumberOfRuns ?? this.TraceNumberOfRuns, ThrowOnFailure ?? this.ThrowOnFailure,
+                TraceDiagnosticsEnabled ?? this.TraceDiagnosticsEnabled, Events ?? this.Events,
+                TraceDiagnosticsWriter ?? this.TraceDiagnosticsWriter
+            );
         }
     }
 }

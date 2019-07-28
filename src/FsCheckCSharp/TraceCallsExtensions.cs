@@ -2,6 +2,7 @@
 // Copyright (c). All rights reserved.
 // See license file in root dir for details.
 // *********************************************************************
+
 namespace FsCheckCSharp
 {
     public static class TraceCallsExtensions

@@ -18,7 +18,7 @@
     <Copyright>Copyright 2019</Copyright>
     <PackageTags>FsCheck CSharp</PackageTags>
     <NoPackageAnalysis>true</NoPackageAnalysis>
-    <Version>1.0.1</Version>
+    <Version>1.1.0</Version>
     <Product>FsCheckCSharp</Product>
     <RepositoryType>Git</RepositoryType>
     <LangVersion>latest</LangVersion>
@@ -34,7 +34,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CSharpRecordsAnalyzer" Version="1.1.0">
+    <PackageReference Include="CSharpRecordsAnalyzer" Version="1.1.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
