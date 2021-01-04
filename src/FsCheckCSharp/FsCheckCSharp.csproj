@@ -38,7 +38,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="FsCheck" Version="3.0.0-alpha4" />
+    <PackageReference Include="FsCheck" Version="3.0.0-alpha5" />
     <PackageReference Include="FSharp.Core" Version="4.6.2" />
   </ItemGroup>
 
