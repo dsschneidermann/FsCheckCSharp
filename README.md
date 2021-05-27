@@ -1,4 +1,4 @@
-# FsCheckCSharp [![Build Status](https://img.shields.io/appveyor/ci/dsschneidermann/fscheckcsharp/master?logo=appveyor)](https://ci.appveyor.com/project/dsschneidermann/fscheckcsharp/branch/master) ![NuGet Version](https://img.shields.io/nuget/v/FsCheckCSharp.svg?logo=nuget) [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=dsschneidermann/FsCheckCSharp)](https://dependabot.com)
+# FsCheckCSharp [![Build Status](https://img.shields.io/appveyor/ci/dsschneidermann/fscheckcsharp/master?logo=appveyor)](https://ci.appveyor.com/project/dsschneidermann/fscheckcsharp/branch/master) ![NuGet Version](https://img.shields.io/nuget/v/FsCheckCSharp) [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=dsschneidermann/FsCheckCSharp)](https://dependabot.com)
 
 Better C# support for FsCheck.
 
